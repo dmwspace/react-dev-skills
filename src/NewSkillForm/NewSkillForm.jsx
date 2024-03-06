@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import './NewSkillForm.css';
 
-export default function NewSkillForm({skills, setSkills}) {
+export default function NewSkillForm({ createNewSkill }) {
+
     const [newSkill, setNewSkill] = useState({
         name: '',
         level: 3
@@ -9,7 +10,7 @@ export default function NewSkillForm({skills, setSkills}) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        setSkills([...skills, newSkill])
+        createNewSkill(newSkill)
         setNewSkill({name: '', level: 3})
     }
 
@@ -34,9 +35,8 @@ export default function NewSkillForm({skills, setSkills}) {
             <select 
                 onChange={handleChange}  
                 name="level" 
-                value={newSkill.value}
+                value={newSkill.level}
                 type="number"
-                defaultValue={3}
             >
                 <option value={1}>1</option>
                 <option value={2}>2</option>
